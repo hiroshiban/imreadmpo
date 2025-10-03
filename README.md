@@ -2,7 +2,7 @@
 
 <div align="right">
 Created    : "2015-06-30 09:21:28 ban"<br>
-Last Update: "2021-12-13 07:29:48 ban"
+Last Update: "2025-10-03 16:54:57 ban"
 </div>
 
 <br>
@@ -20,11 +20,17 @@ Last Update: "2021-12-13 07:29:48 ban"
 ![imreadmpo](doc/images/imreadmpo.jpg)
 
 This **MATLAB** function reads an input MPO file and stores the image data as a MATLAB matrix. It is especially focusing on loading two (left/right-eyes) images extracted from one MPO photo file taken with FujiFilm Real W3 stereo camera and storing them separately into a MATLAB matrix. Any MPO file can be processed but have not fully tested yet.  
+  
+**Important note: The substantial update was applied on Oct 03 2025**  
+The new version is optimized to be significantly faster than disk-based I/O by directly accessing the raw byte buffer of the decoded Java image object, minimizing data copies and type conversions between Java and MATLAB.  
+  
+If you want to use this updated MEX routine, please copy the decode_jpeg_mex.mexw64 and jpeg62.dll files together with this imreadmpo_mex function in the same directory. You may need to compile decode_jpeg_mex.cpp by yourself depending on your environment. Importantly, even without the faster mex complied binary file, this function works using the previous 'fwrite' and 'imread' routines.  
 
 ## **usage**
 
 ```Matlab
-function [imgs,imgsize,IFD,MPE,header]=imreadmpo(mpofile,:save_flg)
+function [imgs,imgsize,IFD,MPE,header]=imreadmpo(mpofile,:save_flg);     % without the mex acceleration (previous routine with fwrite and imread)
+function [imgs,imgsize,IFD,MPE,header]=imreadmpo_mex(mpofile,:save_flg); % with the mex acceleration (new and faster)
 (: is option)
 ```
 
