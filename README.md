@@ -2,7 +2,7 @@
 
 <div align="right">
 Created    : "2015-06-30 09:21:28 ban"<br>
-Last Update: "2025-10-03 16:54:57 ban"
+Last Update: "2025-10-03 18:45:56 ban"
 </div>
 
 <br>
@@ -24,7 +24,9 @@ This **MATLAB** function reads an input MPO file and stores the image data as a 
 **Important note: The substantial update was applied on Oct 03 2025**  
 The new version is optimized to be significantly faster than disk-based I/O by directly accessing the raw byte buffer of the decoded Java image object, minimizing data copies and type conversions between Java and MATLAB.  
   
-If you want to use this updated MEX routine, please copy the decode_jpeg_mex.mexw64 and jpeg62.dll files together with this imreadmpo_mex function in the same directory. You may need to compile decode_jpeg_mex.cpp by yourself depending on your environment. Importantly, even without the faster mex complied binary file, this function works using the previous 'fwrite' and 'imread' routines.  
+If you want to use this updated MEX routine, please copy the decode_jpeg_mex.mexw64 and jpeg62.dll files together with this imreadmpo_mex function to the same directory. You may need to compile decode_jpeg_mex.cpp by yourself depending on your environment. Importantly, even without the faster mex complied binary file, this function works using the previous 'fwrite' and 'imread' routines.  
+  
+To compile decode_jpeg_mex.cpp by yourself, please follow the instructions written in the file.  
 
 ## **usage**
 
